@@ -1,0 +1,24 @@
+The firmware SysEx has the following structure. It created from the hex file (the result of the AVR complilation) by the Python script\footnote{As of the writing of this manual the script complies with Python 2 but not the newer Python 3. So depending on your local Python installation the execution inside the Makefile may need to be adjusted to ensure that script is run in Python 2.} \textit{fw2syx.py} (fw2syx subfolder). The conversion of 4 full bytes to 5 MIDI bytes is done in the same way as for patches (as described in this document). As for patch data there is one complete SysEx command per flash storage page. In case of the firmware, an additional check sum is included for each page. A special termination SysEx command is used to signal the firmware that the data stream is complete. The firmware SysEx is received and decoded in the function \textit{updater\_main()} in the class \textit{firmware.c} (firmware subfolder). 
+
+\begin{itemize}
+  \item Chain of data SysEx block, each representing a storage page in the Teensy++ 2.0
+  \subitem "F0": SysEx start
+  \subitem Prophet-600 signature: "00 61 16"
+  \subitem Prophet-600 firmware message type: "6B"
+  \subitem Pagesize (constant: "02 00" = 512 symbols)
+  \subitem Page ID: one byte starting from highest ID
+  \subitem 64 sets of 5 MIDI bytes (14 bit) (5 MIDI bytes are converted to 4 full bytes, this a total of 256 bytes for that page).
+  \subitem 3 bytes of checksum
+  \subitem "F7": SysEx end
+  \item One termination SysEx
+  \subitem "F0": SysEx start
+  \subitem Prophet-600 signature: "00 61 16"
+  \subitem Prophet-600 firmware message type: "6B"
+  \subitem "00 00", instead of page size, signifying the end of the data stream
+  \subitem "F7": SysEx end  
+\end{itemize}
+
+
+\textbf{Checksum}
+
+(this needs to be described)
