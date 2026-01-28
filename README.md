@@ -1,6 +1,4 @@
-=============
-== Z80P600 ==
-=============
+Z80P600
 
 A board and its firmware to replace (and enhance) the Z80 CPU of a SCI Prophet600.
 
