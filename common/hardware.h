@@ -16,8 +16,12 @@ extern uint8_t io_read(uint8_t address);
 
 extern int8_t hardware_getNMIState(void);
 
-#define STORAGE_PAGE_SIZE 256UL
-#define STORAGE_SIZE 0xe000UL //56KB, 224 pages
+// Flat
+#define STORAGE_PAGE_SIZE 0x100UL 	//  256 bytes
+#define STORAGE_SIZE 0x10000UL 		//	64KB, 256 pages
+
+//#define STORAGE_PAGE_SIZE 256UL
+//#define STORAGE_SIZE 0xe000UL //56KB, 224 pages
 
 extern void storage_write(uint32_t pageIdx, uint8_t *buf);
 extern void storage_read(uint32_t pageIdx, uint8_t *buf);

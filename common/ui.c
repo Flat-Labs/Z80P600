@@ -196,7 +196,17 @@ static int8_t changeMiscSetting(p600Button_t button)
             ui.lastActivePot=ppNone;
             refreshFullState();
             return 1;
-        default:
+// Flat
+ 		case pbSeq1: // resets settings
+			settings_reset();
+            sevenSeg_scrollText("settings reset",1);
+            // go directly into preset panel mode
+//            settings.presetMode=1;
+            ui.digitInput=diSynth;
+            ui.lastActivePot=ppNone;
+            refreshFullState();
+            return 1;
+       default:
 		break;
 	}
 	return 0;
@@ -292,6 +302,10 @@ static LOWERCODESIZE void handleMiscAction(p600Button_t button)
 		break;
 	case pbPreset: // reset to a basic patch
 		sevenSeg_scrollText("again sets basic patch",1);
+		break;
+	// Flat
+	case pbSeq1: // reset settings an tune
+		sevenSeg_scrollText("again resets settings",1);
 		break;
 	default:
 		break;
@@ -733,7 +747,9 @@ void LOWERCODESIZE ui_handleButton(p600Button_t button, int pressed)
             refreshPresetMode();
             ui.digitInput=diStoreDecadeDigit;
         }
-        else if ((ui.isShifted || ui.isDoubleClicked) && ((button>=pb0 && button<=pb9) || button==pbTune || button==pbPreset || button==pbRecord))
+	// Flat
+    //  else if ((ui.isShifted || ui.isDoubleClicked) && ((button>=pb0 && button<=pb9) || button==pbTune || button==pbPreset || button==pbRecord))
+        else if ((ui.isShifted || ui.isDoubleClicked) && ((button>=pb0 && button<=pb9) || button==pbTune || button==pbPreset || button==pbRecord || button==pbSeq1))
 		// these are the special function buttons in shift mode
 		{
 			// Disable double click mode which might confuse

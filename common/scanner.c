@@ -57,11 +57,11 @@ void scanner_update(int8_t fullScan)
 	{
 		BLOCK_INT
 		{
-			io_write(0x08,i);
+			io_write(CSO0,i);
 
 			CYCLE_WAIT(10);
 
-			ps=io_read(0x0a);
+			ps=io_read(CSO2);
 		}
 
 		for(j=0;j<8;++j)

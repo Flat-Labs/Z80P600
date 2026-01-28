@@ -346,6 +346,23 @@ LOWERCODESIZE void settings_save(void)
 	}
 }
 
+// Flat - Resets the settings to default and re-tune the synth, which resaves the settings
+void settings_reset(void)
+{
+	settings.presetNumber=1; // if no other info, set selected preset to 1
+	settings.presetMode=0; // if no info, default start up is in live mode
+	settings.seqArpClock=HALF_RANGE;
+	settings.benderMiddle=HALF_RANGE;
+	settings.midiReceiveChannel=-1; // default is 'OMNI'
+	settings.voiceMask=0x3f; // default is: all on
+	settings.midiSendChannel=0; // default is: 1
+	settings.syncMode=smInternal; // default is internal clock
+	settings.vcfLimit=0; // default is: no limit on the VCF
+	settings.midiMode=0; // normal mode
+	settings.panelLayout=0; // GliGli layout
+
+	tuner_tuneSynth();
+}
 
 LOWERCODESIZE int8_t preset_checkPage(uint16_t number)
 {

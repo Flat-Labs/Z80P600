@@ -6,7 +6,20 @@
 #include "hardware.h"
 
 //#define DEBUG
-#define RELEASE "v2022-1"
+
+// Flat
+#define RELEASE "v2026-1"
+
+// Chip select addresses labelled as in the schematics (Flat)
+#define CSO0	0x08	// Display, switches & keyboard
+#define CSO1	0x09	// Display  
+#define CSO2	0x0A	// Potmuxes
+#define CSO3	0x0B	// Waveform & gates latch
+#define CS05	0x0D	// S&H latch
+#define CS06	0x0E	// Tune circuit
+
+#define CSI0	0x09	// Enables read FF status(D1), Tune counter, (D2) ADC_CPR (D3), TP301 (D4), Footswitch (D5)
+#define CSI1	0x0A	// Enables read switches and keyboard
 
 #define UART_USE_HW_INTERRUPT // this needs an additional wire that goes from pin C4 to pin E4
 

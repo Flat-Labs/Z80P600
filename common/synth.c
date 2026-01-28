@@ -1148,7 +1148,7 @@ static void handleBitInputs(void)
 
     BLOCK_INT
     {
-        cur=io_read(0x9);
+        cur=io_read(CSI0);
     }
 
     // control footswitch
@@ -1217,7 +1217,7 @@ void synth_init(void)
 
     // go in scaling adjustment mode if needed
 
-    if(io_read(0x9)&16)
+    if(io_read(CSI0)&16)
         tuner_scalingAdjustment();
 
     // load settings from storage; tune when they are bad
@@ -1265,7 +1265,7 @@ void synth_init(void)
     // a nice welcome message, and we're ready to go :)
 
     //sevenSeg_scrollText("GliGli's P600 upgrade "VERSION,1);
-    sevenSeg_scrollText("GliGli "VERSION" by imogen",1);
+    sevenSeg_scrollText("P600 MoGliFied "VERSION,1);
 }
 
 void synth_update(void)
@@ -1279,7 +1279,7 @@ void synth_update(void)
     BLOCK_INT
     {
         ++frc;
-        io_write(0x0e,((frc&1)<<2)|0b00110001);
+        io_write(CS06,((frc&1)<<2)|0b00110001);
     }
 
     // update pots, detecting change

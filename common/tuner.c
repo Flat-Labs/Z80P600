@@ -78,7 +78,7 @@ static NOINLINE void ffMask(uint8_t set,uint8_t clear)
 	ff_state|=set;
 	ff_state&=~clear;
 	
-	io_write(0x0e,ff_state);
+	io_write(CS06,ff_state);
 	CYCLE_WAIT(4);
 	
 	++ff_step;
@@ -90,7 +90,7 @@ static NOINLINE void ffDoTimeout(void)
 #ifdef DEBUG
 	print("bad flip flop status : ");
 	phex(ff_step);
-	phex(io_read(0x9));
+	phex(io_read(CSI0));
 	print(" timeout count : ");
 	phex(ff_timeoutCount);
 	print("\n");
@@ -104,7 +104,7 @@ static void ffWaitStatus(uint8_t status)
 	uint32_t timeout=STATUS_TIMEOUT;
 
 	do{
-		s=io_read(0x9);
+		s=io_read(CSI0);
 		--timeout;
 	}while(((s>>1)&0x01)!=status && timeout);
 
@@ -118,7 +118,7 @@ static void ffWaitCounter(uint8_t status)
 	uint32_t timeout=STATUS_TIMEOUT;
 
 	do{
-		s=io_read(0x9);
+		s=io_read(CSI0);
 		--timeout;
 	}while(((s>>2)&0x01)!=status && timeout);
 
@@ -542,11 +542,11 @@ LOWERCODESIZE void tuner_scalingAdjustment(void)
 	{
 		BLOCK_INT
 		{
-			io_write(0x08,0);
+			io_write(CSO1,0);
 
 			CYCLE_WAIT(10);
 
-			ps=io_read(0x0a);
+			ps=io_read(CSI1);
 		}
 
 		if(ps&2) //pb1

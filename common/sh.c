@@ -18,7 +18,7 @@ static inline void updateGates(void)
 {
 	BLOCK_INT
 	{
-		io_write(0x0b,sh.gateBits);
+		io_write(CSO3,sh.gateBits);
 	}
 }
 
@@ -34,21 +34,21 @@ static inline void updateCV(p600CV_t cv, uint16_t cvv)
 		dac_write(cvv);
 	
 		// prepare S&H
-		io_write(0x0d,dmux1);
+		io_write(CS05,dmux1);
 		
 		// for DAC rise time
 		CYCLE_WAIT(4);
 		//CYCLE_WAIT(1);
 
 		// select current CV
-		io_write(0x0d,dmux2);
+		io_write(CS05,dmux2);
 
 		// 2 us to let S&H get very precise voltage, some P600s need it apparently
 		CYCLE_WAIT(8);
 		//CYCLE_WAIT(1);
 
 		// deselect it
-		io_write(0x0d,dmux1);
+		io_write(CS05,dmux1);
 
 		// 2 more us to let analog hardware stabilize
 		CYCLE_WAIT(8);
@@ -87,19 +87,19 @@ FORCEINLINE void sh_setCV_FastPath(p600CV_t cv,uint16_t value)
 	dac_write(value);
 
 	// prepare S&H
-	io_write(0x0d,dmux1);
+	io_write(CS05,dmux1);
 
 	// for DAC rise time
 	CYCLE_WAIT(1);
 
 	// select current CV
-	io_write(0x0d,dmux2);
+	io_write(CS05,dmux2);
 
 	// let S&H get very precise voltage (cf tohk issue)
 	CYCLE_WAIT(1);
 	
 	// deselect it
-	io_write(0x0d,dmux1);
+	io_write(CS05,dmux1);
 
     // let analog hardware stabilize
     // CYCLE_WAIT(1);

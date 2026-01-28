@@ -112,7 +112,7 @@ static void updatePot(int8_t pot)
 			// select pot
 
 		mux=(pot&0x0f)|(0x20>>(pot>>4));
-		io_write(0x0a,mux);
+		io_write(CSO2,mux);
 		CYCLE_WAIT(4);
 
 			// init values
@@ -134,7 +134,7 @@ static void updatePot(int8_t pot)
 			CYCLE_WAIT(2);
 
 			// is DAC value lower than pot value?
-			lower=(io_read(0x09)&0x08)!=0;
+			lower=(io_read(CSO1)&0x08)!=0;
 
 			// adjust estimate
 			if (lower)
@@ -148,7 +148,7 @@ static void updatePot(int8_t pot)
 
 			// unselect
 
-		io_write(0x0a,0xff);
+		io_write(CSO2,0xff);
 		CYCLE_WAIT(4);
 
         // suppress the bits beyond the measurement accuracy

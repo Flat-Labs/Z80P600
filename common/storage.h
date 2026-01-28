@@ -123,6 +123,7 @@ void preset_saveCurrent(uint16_t number);
 
 void preset_loadDefault(int8_t makeSound);
 void settings_loadDefault(void);
+void settings_reset(void);			//Flat
 
 void storage_simpleExport(uint16_t number, uint8_t * buf, int16_t size);
 void storage_export(uint16_t number, uint8_t * buf, int16_t * loadedSize);

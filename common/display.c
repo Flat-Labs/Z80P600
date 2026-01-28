@@ -201,11 +201,11 @@ void display_update(int8_t fullUpdate)
 	
 	BLOCK_INT
 	{
-		io_write(0x09,0x00); // switch all bits off at the address 9
+		io_write(CSO1, 0x00); // switch all bits off at the address 9
 		CYCLE_WAIT(1);
-		io_write(0x08,0x10<<display.activeCol); // for LEDs this one bit at position 5, for left digit + dot it is 6, for right digit + tune LED it is 7
+		io_write(CSO0, 0x10<<display.activeCol); // for LEDs this one bit at position 5, for left digit + dot it is 6, for right digit + tune LED it is 7
 		CYCLE_WAIT(1);
-		io_write(0x09,display.activeRows[display.activeCol]); // push the 8 bits into the address
+		io_write(CSO1, display.activeRows[display.activeCol]); // push the 8 bits into the address
 	}
 
 	display.activeCol=(display.activeCol+1)%3;
