@@ -1,0 +1,45 @@
+### Footprint positions - created on 2025-03-08T12:57:12+0100 ###
+### Printed by KiCad version 9.0.0
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                  Package                                             PosX       PosY       Rot  Side
+C1        100n                 C_0603_1608Metric                               146.4990   -55.6390  180.0000  top
+C2        4µ7                 C_0805_2012Metric                               146.3490   -53.6890  180.0000  top
+C3        100n                 C_0603_1608Metric                               147.7490   -65.3390    0.0000  top
+C4        4µ7                 C_0805_2012Metric                               130.0595   -61.4695  180.0000  top
+C5        100n                 C_0603_1608Metric                               132.5995   -61.3425   90.0000  top
+C6        100n                 C_0603_1608Metric                               130.1980   -77.4780  -90.0000  top
+C7        100n                 C_0603_1608Metric                               136.1980   -77.4780  -90.0000  top
+C8        100n                 C_0603_1608Metric                               139.1490   -80.6390   90.0000  top
+C9        100n                 C_0603_1608Metric                               131.4990  -100.9390  180.0000  top
+C10       100n                 C_0603_1608Metric                               135.5980   -93.3780  180.0000  top
+C11       100n                 C_0603_1608Metric                               130.7095   -93.3483    0.0000  top
+C12       4µ7                 C_0805_2012Metric                               147.8990   -71.8390    0.0000  top
+C13       100n                 C_0603_1608Metric                               147.6990   -73.6390    0.0000  top
+C14       100n                 C_0603_1608Metric                               147.5000   -79.7500    0.0000  top
+C15       100n                 C_0603_1608Metric                               155.2990   -79.7390  180.0000  top
+C16       100n                 C_0603_1608Metric                               150.0000   -99.2500    0.0000  top
+C17       22p                  C_0603_1608Metric                               156.8490   -99.8890  -90.0000  top
+C18       22p                  C_0603_1608Metric                               149.9990  -100.8890  180.0000  top
+D1        SP0503BAHT           SOT-143                                         134.0016   -52.4976  -90.0000  top
+D2        SS25                 D_SMA                                           143.7490   -60.3390  -90.0000  top
+D3        BAT54J               D_SOD-323F                                      140.6490   -98.3890   90.0000  top
+D4        LED                  LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder   161.6990   -99.8890   90.0000  top
+J1        Power_Select_Jumper  PinHeader_1x03_P2.54mm_Vertical                 149.3590   -50.7390   90.0000  top
+J2        ISP                  PinHeader_2x03_P2.54mm_Vertical                 130.6240   -73.2540   90.0000  top
+J3        USB_B_Micro          USB_Micro_B_Vertical_Wuerth_651005136421        134.5785   -57.5015    0.0000  top
+L1        L_Ferrite            L_0603_1608Metric                               138.6490   -50.7390  180.0000  top
+R1        1K                   R_0603_1608Metric                               130.9485   -64.2635  -90.0000  top
+R2        1K                   R_0603_1608Metric                               134.6980   -77.4780   90.0000  top
+R3        10K                  R_0603_1608Metric                               142.7490   -98.3890   90.0000  top
+R4        22K1                 R_0603_1608Metric                               129.0435   -64.2635  -90.0000  top
+R5        47K5                 R_0603_1608Metric                               129.0435   -67.3115  -90.0000  top
+R6        330                  R_0603_1608Metric                               159.6990   -99.8890   90.0000  top
+U1        ATmega1281-16A       TQFP-64_14x14mm_P0.8mm                          152.5000   -89.5000    0.0000  top
+U3        MCP1825S             SOT-223-3_TabPin2                               150.2490   -60.3390    0.0000  top
+U5        TXU0304PWR           TSSOP14_PW_TEX                                  133.1640   -82.2140    0.0000  top
+U6        TXU0304PWR           TSSOP14_PW_TEX                                  133.1640   -89.2140  180.0000  top
+U7        FM25V05-G            SOIC-8_3.9x4.9mm_P1.27mm                        133.1955   -97.4071  180.0000  top
+U8        CP2102N-Axx-xQFN24   QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm             134.5990   -65.4390  -90.0000  top
+Y1        16MHz                Crystal_SMD_2520-4Pin_2.5x2.0mm                 153.6990  -100.1890  180.0000  top
+## End

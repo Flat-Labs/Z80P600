@@ -1,0 +1,7 @@
+### Footprint positions - created on 2025-03-08T12:57:12+0100 ###
+### Printed by KiCad version 9.0.0
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val         Package                    PosX       PosY       Rot  Side
+U4        Z80-Socket  Z80_DIP-40_SMDSocket   152.5006   -70.5800  180.0000  bottom
+## End
