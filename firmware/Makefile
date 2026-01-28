@@ -54,8 +54,7 @@ XNORMIDISRC = \
 SRC = \
 	$(XNORMIDISRC) \
 	$(TARGET).c \
-	usb_debug_only.c \
-	print.c \
+	spi_fram.c \
 	../common/display.c \
 	../common/scanner.c \
 	../common/dac.c \
@@ -82,8 +81,8 @@ SRC = \
 #MCU = at90usb162       # Teensy 1.0
 #MCU = atmega32u4        # Teensy 2.0
 #MCU = at90usb646       # Teensy++ 1.0
-MCU = at90usb1286      # Teensy++ 2.0
-
+#MCU = at90usb1286      # Teensy++ 2.0
+MCU = atmega1281	# FlatBoard
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the 
@@ -289,10 +288,15 @@ LDFLAGS += $(patsubst %,-L%,$(EXTRALIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
 #LDFLAGS += -T linker_script.x
 
-# 0x1e000 is NRWW zone start on at90usb1286
+# 0x1e000 is NRWW zone start on atmega1281 (0xF000), and this is where the updater is located
 LDFLAGS += -Wl,--section-start=.updater=0x1e000
-LDFLAGS += -Wl,--section-start=.nrww_misc=0x1ec00
-LDFLAGS += -Wl,--section-start=.bootloader=0x1f000
+
+# Misc updater functions are located in between at 0x1ec00 (0xF600 - word address) 
+LDFLAGS += -Wl,--section-start=.nrww_misc=0x1ec00	
+
+#LDFLAGS += -Wl,--section-start=.bootspace=0x1f000
+# boot_program_page located at 0x1fc00 (0xFE00 - word address), just at the start of the bootloader section
+LDFLAGS += -Wl,--section-start=.bootspace=0x1fc00
 
 #---------------- Programming Options (avrdude) ----------------
 
@@ -300,7 +304,11 @@ LDFLAGS += -Wl,--section-start=.bootloader=0x1f000
 # Type: avrdude -c ?
 # to get a full listing.
 #
-AVRDUDE_PROGRAMMER = stk500v2
+# Originally (Gligli & Imogen)
+# AVRDUDE_PROGRAMMER = stk500v2
+# 
+# As we use usbasp, programmer is usbasp
+AVRDUDE_PROGRAMMER = usbasp
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
 AVRDUDE_PORT = com1    # programmer connected to serial device
@@ -535,10 +543,12 @@ extcoff: $(TARGET).elf
 
 %.bin: %.elf
 	@echo $(MSG_FLASH) $@
-	$(OBJCOPY) -O binary -R .eeprom -R .fuse -R .lock -R .signature -R .updater -R .nrww_misc -R .bootloader $< $@
+	$(OBJCOPY) -O binary -R .eeprom -R .fuse -R .lock -R .signature -R .updater -R .nrww_misc -R .bootspace $< $@
+#	$(OBJCOPY) -O binary -R .eeprom -R .fuse -R .lock -R .signature -R .updater -R .nrww_misc -R .bootspace $< $@
 
 %.syx: %.bin
-	python3 ../fw2syx/fw2syx.py $< -o $@
+#	python3 ../fw2syx/fw2syx.py $< -o $@
+	py ../fw2syx/fw2syx.py $< -o $@
 
 %.eep: %.elf
 	@echo $(MSG_EEPROM) $@
@@ -611,7 +621,7 @@ clean: begin clean_list end
 
 clean_list :
 	@echo $(MSG_CLEANING)
-	$(REMOVE) $(TARGET).hex
+#	$(REMOVE) $(TARGET).hex
 	$(REMOVE) $(TARGET).eep
 	$(REMOVE) $(TARGET).cof
 	$(REMOVE) $(TARGET).elf
