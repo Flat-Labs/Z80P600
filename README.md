@@ -55,7 +55,7 @@ Flashing:
 	- You're done ;)
 
 2) Sysex upgrades 
-	Sysex upgrades work (From Tape + To Tape while powering on) and can be used to succesively upgrade the firmware through MIDI, provided that an older firmware has already been flashed once.
+	- Sysex upgrades work (From Tape + To Tape while powering on) and can be used to succesively upgrade the firmware through MIDI, provided that an older firmware has already been flashed once.
 
 IMPORTANT NOTE : As the P600 presets, settings, sequences and arpeggios are now stored on a separate F-RAM, uploading (USBASP or sysex) a new firmware won't erase them.
 Hence the option to reset the settings, just in case...
