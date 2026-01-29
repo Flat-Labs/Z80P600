@@ -67,7 +67,7 @@ Board and PCB
 
 Schematics and PCB have been drawn using Kikad (V9 or above) : https://www.kicad.org/
 The prototypes have been made (PCB + assembly) by JLC PCB, and the BOM file includes JLCPCB references for the parts.
-The only part that is not included is the 40-pin DIL socket (Mouser ref. https://www.mouser.fr/ProductDetail/437-1501064000106161), and it has to be hand-soldered.
+The only part that is not included is the 40-pin DIL socket (Mouser ref. https://www.mouser.com/ProductDetail/437-1501064000106161 - gold plated, or https://www.mouser.fr/ProductDetail/437-1508064000106101 - tinned), and it has to be hand-soldered.
 
 Everything is working great, but the board LED seems a bit too bright for my taste...
 So the R2 resitor value (for the LED) may be increased to something between 470 and 1000 ohms.
