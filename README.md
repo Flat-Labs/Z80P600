@@ -36,6 +36,9 @@ Compiling:
 
 This will produce p600firmware.hex, which you can flash onto the board.
 
+NOTE: As I'm not used to Github, I was unable to upload the dependence directory (.dep) in a correct manner. Therefore, there is a 'dep' directory in the firmare dir, that should be renamed to .dep for the make process to work.
+Sorry for being a newbie here...
+
 Flashing:
 ---------
 1) For the first time.
